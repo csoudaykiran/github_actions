@@ -12,6 +12,7 @@ on:
           - major
           - minor
           - patch
+  pull_request:
 
 jobs:
   print-context:
