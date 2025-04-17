@@ -41,8 +41,8 @@ jobs:
           echo "Branch: ${{ github.ref_name }}" >> version.txt
       - name: configure git
         run: |
-            git config --global user.email "github-actions@github.com"
-            git config --global user.name "github-actions"
+            git config --global user.email "ganjinagaudaykiran@gmail.com"
+            git config --global user.name "udaykiran007"
             echo "git configured.."
             
       - name: Push version file to triggered branch
