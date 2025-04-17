@@ -32,3 +32,17 @@ jobs:
           echo "GITHUB_SHA: $GITHUB_SHA"
           echo "GITHUB_REF: $GITHUB_REF"
           echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+
+      - name: Create a version file
+        run: |
+          echo "Release Type: ${{ github.event.inputs.release_type }}" > version.txt
+          echo "Triggered by: ${{ github.actor }}" >> version.txt
+          echo "Branch: ${{ github.ref_name }}" >> version.txt
+
+      - name: Commit & Push version file to triggered branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add version.txt
+          git commit -m "chore: add version.txt for ${{ github.event.inputs.release_type }} release"
+          git push origin HEAD:${{ github.ref_name }}
