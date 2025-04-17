@@ -49,6 +49,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
+          echo "Using token: ${GH_TOKEN}"
           git add version.txt
           git commit -m "chore: add version.txt for ${{ github.event.inputs.release_type }} release"
           git push origin HEAD:${{ github.ref_name }} --force
