@@ -1,0 +1,13 @@
+name: CD
+
+on:
+    workflow_dispatch:
+    pull_request:
+
+jobs:
+  get_pr_number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR number
+        run: |
+            echo "PR Number: ${{ github.event.pull_request.number }}"
